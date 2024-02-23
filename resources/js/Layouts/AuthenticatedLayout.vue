@@ -11,6 +11,7 @@ const showingNavigationDropdown = ref(false);
 </script>
 
 <template>
+    
     <div>
         <div class="min-h-screen bg-gray-100">
             <nav class="bg-white border-b border-gray-100">
@@ -31,6 +32,9 @@ const showingNavigationDropdown = ref(false);
                             <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                                 <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
+                                </NavLink>
+                                <NavLink :href="route('makerestaurant')" :active="route().current('makerestaurant')">
+                                    Create a restaurant
                                 </NavLink>
                             </div>
                         </div>
@@ -114,6 +118,9 @@ const showingNavigationDropdown = ref(false);
                     <div class="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink :href="route('dashboard')" :active="route().current('dashboard')">
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('makerestaurant')" :active="route().current('makerestaurant')">
+                                    Create a restaurant
                         </ResponsiveNavLink>
                     </div>
 

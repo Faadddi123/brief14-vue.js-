@@ -2,13 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Notifications\MyNotification;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Notification;
 use Inertia\Inertia;
+
 class RestaurantController extends Controller
 {
 
     public function showCreateForm()
     {
+        $user = Auth::user();
+        $invoice = [
+            'amount' => 100, // Example data
+            'description' => 'Purchase invoice', // Example data
+        ];
+        
+        // Check if the user is authenticated before triggering the notification
+        if ($user) {
+            $user->notify(new MyNotification());
+ // Replace MyNotification with the actual name of your notification class
+        }
         return Inertia::render('Restaurants/make');
     }
     /**

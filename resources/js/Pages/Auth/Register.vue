@@ -1,11 +1,13 @@
 <script setup>
+
+import { defineProps } from 'vue';
 import GuestLayout from '@/Layouts/GuestLayout.vue';
 import InputError from '@/Components/InputError.vue';
 import InputLabel from '@/Components/InputLabel.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 import { Head, Link, useForm } from '@inertiajs/vue3';
-
+const { roles } = defineProps();
 const form = useForm({
     name: '',
     email: '',
@@ -18,6 +20,9 @@ const submit = () => {
         onFinish: () => form.reset('password', 'password_confirmation'),
     });
 };
+
+
+
 </script>
 
 <template>
@@ -85,7 +90,14 @@ const submit = () => {
 
                 <InputError class="mt-2" :message="form.errors.password_confirmation" />
             </div>
+            <div class="mt-4">
+                <select name="roles" id="">
+                    <option v-for="role in roles" :key="role.id" :value="role.id">
+                      {{ role.name }}
+                    </option>
 
+                </select>
+            </div>
             <div class="flex items-center justify-end mt-4">
                 <Link
                     :href="route('login')"

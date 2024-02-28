@@ -36,9 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-Route::get('/makerestaurant', function () {
-    return Inertia::render('Restaurants/make');
-})->middleware(['auth', 'verified'])->name('makerestaurant');
+Route::get('/makerestaurant', [RestaurantController::class, 'showCreateForm'])
+    ->middleware(['auth', 'verified'])
+    ->name('makerestaurant');
 
 Route::post('/makerestaurant', [RestaurantController::class, 'store'])
     ->middleware(['auth', 'verified'])

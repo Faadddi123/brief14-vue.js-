@@ -7,17 +7,20 @@
             <form @submit.prevent="submitForm" action="{{ route('restaurants.store') }}" method="post">
                 <div>
                 <label for="name">Name:</label>
-                <input type="text" id="name" v-model="formData.name" required />
+                <input name = "name" type="text" id="name" v-model="formData.name" required />
                 </div>
                 <div>
                 <label for="open">Opening Hours:</label>
-                <input type="time" id="open" v-model="formData.openingHours" required />
+                <input name="open_at" type="time" id="open" v-model="formData.openingHours" required />
                 </div>
                 
                 <div>
                 <label for="close">Closing Hours:</label>
-                <input type="time" id="close" v-model="formData.closingHours" required />
+                <input name="close_at" type="time" id="close" v-model="formData.closingHours" required />
                 </div>
+                <select name="owner_id" id="">
+                  
+                </select>
                 <PrimaryButton type="submit">Submit</PrimaryButton>
             </form>
         </GuestLayout>
